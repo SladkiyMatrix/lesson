@@ -52,7 +52,7 @@ else {
         echo $error_form;
     } else
         if ($num1 == 0 || $num2 == 0) {
-            $error_form = 'не хорошчно на 0 делить';
+            $error_form = 'не хорошечно на 0 делить';
             echo $error_form;
         }
     else
