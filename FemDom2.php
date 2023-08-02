@@ -72,4 +72,23 @@ else {
         }
 
 }
+
+
+//5е задание
 ?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подвал</title>
+    <link rel="stylesheet" href="stylefooter.css">
+</head>
+<body>
+<div></div>
+<div id="footer">
+    <?php
+    echo "На дворе" . date('Y') . "год";
+    ?>
+</div>
+</body>
+</html>
