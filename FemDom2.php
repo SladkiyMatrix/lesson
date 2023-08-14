@@ -22,7 +22,7 @@ $a = rand(0, 15);
 
 
 //3е задание:
-require_once('lib.php');
+/*require_once('lib.php');
 
 $form ='
         <form method="POST">
@@ -71,7 +71,7 @@ else {
                 break;
         }
 
-}
+}*/
 
 
 //5е задание
@@ -84,11 +84,38 @@ else {
     <link rel="stylesheet" href="stylefooter.css">
 </head>
 <body>
-<div></div>
-<div id="footer">
+
+<footer id="footer">
     <?php
-    echo "На дворе" . date('Y') . "год";
+    echo "На дворе " . date('Y') . " год";
     ?>
-</div>
+</footer>
 </body>
 </html>
+
+<?php
+//6e zadanie
+echo power(3,3);
+
+function power($val, $pow){
+    //ессли степень 0
+    if ($pow == 0) {
+        return 1;
+    }
+    //если стпень 1
+    if ($pow == 1) {
+        return $val;
+    }
+    //если отрицательное
+    if($pow <0){
+        return power(1/$val, -$pow);
+    }
+
+    return $val * power($val, $pow-1);
+
+}
+
+
+
+
+
