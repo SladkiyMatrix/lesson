@@ -18,7 +18,7 @@ switch(true) {
         break;
 }*/
 //2е задание:
-$a = rand(0, 15);
+/*$a = rand(0, 15);*/
 
 
 //3е задание:
@@ -76,7 +76,7 @@ else {
 
 //5е задание
 ?>
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -84,18 +84,18 @@ else {
     <link rel="stylesheet" href="stylefooter.css">
 </head>
 <body>
-
+<p>Здесь Женёк получил по жопе, потому что засунул footer в body</p>
+</body>
 <footer id="footer">
     <?php
-    echo "На дворе " . date('Y') . " год";
-    ?>
+/*    echo "На дворе " . date('Y') . " год";
+    */?>
 </footer>
-</body>
-</html>
+</html>-->
 
 <?php
 //6e zadanie
-echo power(3,3);
+/*echo power(3,3);
 
 function power($val, $pow){
     //ессли степень 0
@@ -113,9 +113,77 @@ function power($val, $pow){
 
     return $val * power($val, $pow-1);
 
-}
+}*/
+//7е задание
+    /*echo date("H") . " часов " . date("i") . " минут";*/
+
+    $hours = date("H");
+    $minutes = date("i");
+    function eTime($hours,$minutes){
+
+        $arr = array (
+            'H' => array(' час ', ' часа ', ' часов '),
+            'i' => array(' минута', ' минуты', ' минут'),
+        );
+
+        switch(($hours >= 20) ? $hours % 10 : $hours)
+        {
+            case 1:
+                $hours .= $arr['H'][0];
+                break;
+            case 2:
+            case 3:
+            case 4:
+                $hours .= $arr['H'][1];
+                break;
+            default:
+                $hours .= $arr['H'][2];
 
 
+        }
+
+        switch (($minutes >= 20) ? $minutes % 10 : $minutes) {
+            case 1:
+                $minutes .= $arr['i'][0];
+                break;
+            case 2:
+            case 3:
+            case 4:
+                $minutes .= $arr['i'][1];
+                break;
+            default:
+                $minutes .= $arr['i'][2];
+
+
+        }
+        return $hours . $minutes;
+    }
+echo eTime($hours, $minutes);
+/*echo x(42 );
+function x($x)
+{
+
+    $a = array(' час', ' часа', ' часов') ;
+
+    switch(($x >= 20) ? $x % 10 : $x)
+    {
+        case 1:
+              $x .= $a[0];
+            break;
+        case 2:
+        case 3:
+        case 4:
+             $x .= $a[1];
+            break;
+        default:
+              $x .= $a[2];
+
+
+    }
+
+    return $x;
+}*/
+?>
 
 
 
