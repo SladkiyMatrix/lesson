@@ -1,6 +1,15 @@
 <?php
+/*// Передаем текст напрямую
+// Обрезаем текст, оставляя два символа
+truncate('hexlet', 2)  // 'he...'
+// Через переменную
+$text = 'it works!'
+// Обрезаем текст, оставляя четыре символа
+$result = truncate($text, 4);
+print_r($result); // => 'it w...'*/
 
-    echo truncate('ahah', 5);
+
+    echo truncate('hexlet', 5);
 
     function truncate($str, $len)
     {
