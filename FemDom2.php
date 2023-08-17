@@ -1,4 +1,9 @@
 <?php
+/*$now_date = DateTime::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));*/
+$timezone = date_default_timezone_get();
+date_default_timezone_set('Europe/Moscow');
+$new_timezone = date_default_timezone_get();
+
 //1е задание:
 /*$a = 42;
 $b = 17;
@@ -117,9 +122,20 @@ function power($val, $pow){
 //7е задание
     /*echo date("H") . " часов " . date("i") . " минут";*/
 
+
+echo $new_timezone;
+
+    $c = date_default_timezone_get();
+    $d = strtotime("now");
+    echo " $d </br> $c </br>";
+    echo  date('H:i', $d) . "</br>";
+
+
     $hours = date("H");
     $minutes = date("i");
     function eTime($hours,$minutes){
+
+
 
         $arr = array (
             'H' => array(' час ', ' часа ', ' часов '),
@@ -183,6 +199,8 @@ function x($x)
 
     return $x;
 }*/
+
+
 ?>
 
 
