@@ -69,7 +69,7 @@ function cardNumber($numbers){
 
 $card = cardNumber($numbers);
 $stars = 4;
-function getHiddenCard($card, $stars){
+function getHiddenCard($card, $stars = 4){
 
         $code = str_repeat('*', $stars);
         $codeCard = mb_substr("$card", -4, 4);
