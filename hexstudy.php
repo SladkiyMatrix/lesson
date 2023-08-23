@@ -77,3 +77,17 @@ function getHiddenCard($card, $stars = 4){
 }
 
 echo getHiddenCard($card, $stars);
+//20е задание, написать функцию которая возвращает разницу между двумя годами рождения в абсолютном виде(без знака)
+//в пхп есть функци abs();
+$year1 = rand(1950, 2023);
+$year2 = rand(1950, 2023);
+echo "$year1</br>$year2</br>";
+
+function getAgeDifference($year1, $year2){
+    $diff = $year1 - $year2;
+    echo "$diff</br>";
+    return abs($diff);
+}
+
+$actual = getAgeDifference($year1, $year2);
+print_r($actual);
