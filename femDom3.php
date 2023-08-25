@@ -66,3 +66,10 @@ function transliteration($word)
 }
 
 echo transliteration("жопа");
+//5. Написать функцию, которая заменяет в строке пробелы на подчеркивания и возвращает видоизмененную строчку.
+function transliterate($string){
+
+    $result = str_replace(' ', '_', $string);
+    return $result;
+}
+echo transliterate('я сделал 5е задание');
