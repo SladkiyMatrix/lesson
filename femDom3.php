@@ -1,13 +1,13 @@
 <?php
 //1е задание
 //С помощью цикла while вывести все числа в промежутке от 0 до 100, которые делятся на 3 без остатка.
-$number = 0;
+/*$number = 0;
 while($number <= 100) {
     if($number % 3 == 0){
-        echo "$number ";
+        echo "$number </br>";
     }
     $number++;
-}
+}*/
 //2е задание
 /*С помощью цикла do…while написать функцию для вывода чисел от 0 до 10, чтобы результат выглядел так:
 0 – ноль.
@@ -16,8 +16,7 @@ while($number <= 100) {
 3 – нечетное число.
 …
 10 – четное число.*/
-$num = 0;
-$num2 = 10;
+
 function parityNum($num,$num2){
 
     $num = 0;
@@ -33,7 +32,6 @@ function parityNum($num,$num2){
         echo $num . $str ;
         $num++;
     } while ($num <= $num2);
-return 1;
 
 }
-echo parityNum($num,$num2);
+echo parityNum(1,10);
