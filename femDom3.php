@@ -100,3 +100,5 @@ foreach ($num as $value){
     }
 }
 echo '</ul>';
+//у меня не получилось селать вывод через implode, хочу потмо разобраться
+//echo '<ul><li>' . implode('</li><li>' , $num ) .'<ul><li>' . $str . '</li></ul>' . '</li></ul>';
