@@ -24,5 +24,22 @@ $bigTowns = ['Москва', 'Киев', 'Минск', 'Токио', 'Мехик
     /*$towns = implode(", ", $bigTowns);
     echo "$towns";*/
 foreach ($bigTowns as $kay => $value){
-    echo $value, ', ';
+    //из-за того что просили циклом через запятую перечислить элем.массива, пришлось костыль пилить
+    //прикольная функция array_key_last
+    if($value == $lastTown = $bigTowns[array_key_last($bigTowns)]){
+        echo $value;
+    }else {
+        echo $value, ', ';
+    }
 }
+echo '<ul>';
+foreach($bigTowns as $towns){
+    echo '<li>'.$towns.'</li>';
+}
+echo '</ul>';
+array_push($bigTowns, 'Астана', 'Кишинёв', 'Душанбе', 'Баку');
+echo '<ul>';
+foreach($bigTowns as $towns){
+    echo '<li>'.$towns.'</li>';
+}
+echo '</ul>';
