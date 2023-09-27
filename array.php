@@ -32,14 +32,65 @@ foreach ($bigTowns as $kay => $value){
         echo $value, ', ';
     }
 }
+//проебался с sort, сделал задание, открыл решение глянуть, добавил
+sort($bigTowns);
+
 echo '<ul>';
 foreach($bigTowns as $towns){
     echo '<li>'.$towns.'</li>';
 }
 echo '</ul>';
 array_push($bigTowns, 'Астана', 'Кишинёв', 'Душанбе', 'Баку');
+
+sort($bigTowns);
 echo '<ul>';
 foreach($bigTowns as $towns){
     echo '<li>'.$towns.'</li>';
+}
+echo '</ul>';
+//3. Массив из слов, введённых пользователем
+//Для этого упражнения PHP создайте форму, запрашивающую у пользователя информацию о погоде,
+// которая была в месяц по выбору пользователя. В отдельных текстовых полях запросите город, месяц и год, о которых идет речь.
+// Ниже покажите ряд флажков, использующих погодные условия: дождь, солнце, облака, холодно, тепло, снег, ветер.
+// Настройте форму для создания массива из отмеченных элементов.
+//В разделе ответа вашего скрипта создайте массив, используя город, месяц и год, введенные пользователем в качестве значений.
+// Выведите следующий ответ: «В городе $city в месяце $month в году $year вы наблюдали следующую погоду: »,
+// где $city, $month и $year - значения из созданного вами массива.
+//Затем выполните цикл по массиву $weather[], который вы получили от пользователя,
+// чтобы отправить обратно маркированный список с ответами пользователя.
+$form ='
+        <form method="POST">
+            <p>Введите город: <input type="text" name="city" value="'. $_POST["city"] .'"/></p>
+			<p>Введите месяц: <input type="text" name="month" value="'. $_POST["month"] .'"/></p>
+			<p>Введите год: <input type="text" name="year" value="'. $_POST["year"] .'"/></p>
+			<input type="submit" value="Отправить">
+		    <br>
+		    <br>
+           
+            <p>поставьте галочки напротив погодных явлений, которые наблюдались в этот день</p>
+            <input type="checkbox" name="mass[]" value="дождик">дождик
+            <input type="checkbox" name="mass[]" value="солнышко">солнышко
+            <input type="checkbox" name="mass[]" value="облачка">облачка
+            <input type="checkbox" name="mass[]" value="холодрыга">холодрыга
+            <input type="checkbox" name="mass[]" value="теплюнь">теплюнь
+            <input type="checkbox" name="mass[]" value="снежочек">снежочек
+            <input type="checkbox" name="mass[]" value="ветрюга">ветрюга
+            <input type="submit" value="Отправить">
+            
+            </form>';
+echo $form;
+//ьассив с погодными явлеиями
+$weather = $_POST['mass'];
+//проверка рабочий ли он
+/*$weather = implode(", ", $weather);
+echo $weather;*/
+/*$city = $_POST['city'];
+$month = $_POST['month'];
+$year = $_POST['year'];*/
+$data = [$_POST['city'], $_POST['month'], $_POST['year']];
+echo "В городе $data[0] в месяце $data[1] в году $data[2] вы наблюдали следующую погоду:";
+echo '<ul>';
+foreach ($weather as $phenomena){
+    echo '<li>' .$phenomena.'</li>';
 }
 echo '</ul>';
