@@ -84,9 +84,6 @@ $weather = $_POST['mass'];
 //проверка рабочий ли он
 /*$weather = implode(", ", $weather);
 echo $weather;*/
-/*$city = $_POST['city'];
-$month = $_POST['month'];
-$year = $_POST['year'];*/
 $data = [$_POST['city'], $_POST['month'], $_POST['year']];
 echo "В городе $data[0] в месяце $data[1] в году $data[2] вы наблюдали следующую погоду:";
 echo '<ul>';
