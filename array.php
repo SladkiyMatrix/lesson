@@ -108,7 +108,7 @@ if (!isset($_POST['submit'])) {
 $typesOfTransport = ['автомобиль', 'самолет', 'паром', 'метро'];
 echo "Путешествовать можно по городу, стране или миру. Вот список некоторых распространенных видов транспорта:";
 
- print_r (listTransport($typesOfTransport));
+
 /*foreach ($typesOfTransport as $transport) {
     echo '<li>' . $transport . '</li>';
 }*/
@@ -118,7 +118,7 @@ $form = '
             <p><input type="text" name="transport" value="' . $_POST["transport"] . '"/></p>
             <input type="submit" value="Отправить">
         </form>';
-echo $form;
+
 $data = $_POST["transport"];
 $data = explode(",", $data);
 
@@ -128,7 +128,8 @@ function listTransport($typesOfTransport) {
         echo '<li>' . $transport . '</li>';
     }
 }
-
+print_r (listTransport($typesOfTransport));
+echo $form;
 /*foreach ($typesOfTransport as $transport) {
     echo '<li>' . $transport . '</li>';
 }*/
