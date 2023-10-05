@@ -105,7 +105,9 @@ if (!isset($_POST['submit'])) {
 // Добавьте еще одно текстовое поле с текстом «Добавить еще?» и еще одну кнопка отправки.
 // Когда пользователь нажимает эту кнопку, страница должна перезагрузиться с новыми дополнениями,
 // добавленными к ранее расширенному списку. Ваш код должен позволять пользователю добавлять элементы сколько угодно раз.
+
 $typesOfTransport = ['автомобиль', 'самолет', 'паром', 'метро'];
+
 echo "Путешествовать можно по городу, стране или миру. Вот список некоторых распространенных видов транспорта:";
 
 function listTransport($typesOfTransport) {
@@ -113,31 +115,28 @@ function listTransport($typesOfTransport) {
         echo '<li>' . $transport . '</li>';
     }
 }
-/*foreach ($typesOfTransport as $transport) {
-    echo '<li>' . $transport . '</li>';
-}*/
+
 $form = '
         <form method="POST">
             <p>Можете добавить в список другие виды транспорта, разделенные запятыми </p>
             <p><input type="text" name="transport" value="' . $_POST["transport"] . '"/></p>
             <input type="submit" value="Отправить">
             
+            <p><input type="text" name="semitransport" placeholder="Добавить еще?" value="' . $_POST["semitransport"] . '"/></p>
+            <input type="submit" value="Отправить">
         </form>';
 
-$form2 = '
-        <form method="POST">
-            <p><input type="text" name="transport" placeholder="Добавить еще?" value="' . $_POST["semiTransport"] . '"/></p>
-            <input type="submit" value="Отправить">
-            
-        </form>';
 
 $data = $_POST["transport"];
-$data = explode(",", $data);
+$explodedata = explode(",", $data);
 
-$typesOfTransport = array_merge($typesOfTransport, $data);
+$semidata = $_POST["semitransport"];
+$explodesemidata = explode(",", $semidata);
 
-print_r (listTransport($typesOfTransport));
+$result = array_merge($typesOfTransport, $explodedata, $explodesemidata);
+
+print_r(listTransport($result));
 echo $form;
-//echo $form2;
+
 
 
