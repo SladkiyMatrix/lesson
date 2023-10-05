@@ -58,11 +58,12 @@ echo '</ul>';
 // где $city, $month и $year - значения из созданного вами массива.
 //Затем выполните цикл по массиву $weather[], который вы получили от пользователя,
 // чтобы отправить обратно маркированный список с ответами пользователя.
-$form ='
+if (!isset($_POST['submit'])) {
+    $form = '
         <form method="POST">
-            <p>Введите город: <input type="text" name="city" value="'. $_POST["city"] .'"/></p>
-			<p>Введите месяц: <input type="text" name="month" value="'. $_POST["month"] .'"/></p>
-			<p>Введите год: <input type="text" name="year" value="'. $_POST["year"] .'"/></p>
+            <p>Введите город: <input type="text" name="city" value="' . $_POST["city"] . '"/></p>
+			<p>Введите месяц: <input type="text" name="month" value="' . $_POST["month"] . '"/></p>
+			<p>Введите год: <input type="text" name="year" value="' . $_POST["year"] . '"/></p>
 			<input type="submit" value="Отправить">
 		    <br>
 		    <br>
@@ -78,16 +79,56 @@ $form ='
             <input type="submit" value="Отправить">
             
             </form>';
-echo $form;
-//ьассив с погодными явлеиями
-$weather = $_POST['mass'];
+    echo $form;
+}else {
+//массив с погодными явлеиями
+    $weather = $_POST['mass'];
 //проверка рабочий ли он
-/*$weather = implode(", ", $weather);
-echo $weather;*/
-$data = [$_POST['city'], $_POST['month'], $_POST['year']];
-echo "В городе $data[0] в месяце $data[1] в году $data[2] вы наблюдали следующую погоду:";
-echo '<ul>';
-foreach ($weather as $phenomena){
-    echo '<li>' .$phenomena.'</li>';
+    /*$weather = implode(", ", $weather);
+    echo $weather;*/
+    $data = [$_POST['city'], $_POST['month'], $_POST['year']];
+    echo "В городе $data[0] в месяце $data[1] в году $data[2], вы наблюдали следующую погоду:";
+    echo '<ul>';
+    foreach ($weather as $phenomena) {
+        echo '<li>' . $phenomena . '</li>';
+    }
+    echo '</ul>';
 }
-echo '</ul>';
+//Создайте массив видов транспорта, включая автомобиль, самолет, паром и метро.
+// Напечатайте в браузере следующее утверждение: «Путешествовать можно по городу, стране или миру.
+// Вот список некоторых распространенных видов транспорта:» Затем введите неупорядоченный список,
+// созданный путем повторения созданной вами переменной массива.
+//
+//Затем предоставьте пользователю текстовое поле ввода и попросите пользователя добавить в список другие виды транспорта,
+// разделенные запятыми. Когда пользователь нажимает «Перейти», обработайте ввод с помощью функций массива,
+// чтобы отправить обратно исходный список с добавлением пользователя.
+// Добавьте еще одно текстовое поле с текстом «Добавить еще?» и еще одну кнопка отправки.
+// Когда пользователь нажимает эту кнопку, страница должна перезагрузиться с новыми дополнениями,
+// добавленными к ранее расширенному списку. Ваш код должен позволять пользователю добавлять элементы сколько угодно раз.
+$typesOfTransport = ['автомобиль', 'самолет', 'паром', 'метро'];
+echo "Путешествовать можно по городу, стране или миру. Вот список некоторых распространенных видов транспорта:";
+
+ print_r (listTransport($typesOfTransport));
+/*foreach ($typesOfTransport as $transport) {
+    echo '<li>' . $transport . '</li>';
+}*/
+$form = '
+        <form method="POST">
+            <p>Можете добавить в список другие виды транспорта, разделенные запятыми </p>
+            <p><input type="text" name="transport" value="' . $_POST["transport"] . '"/></p>
+            <input type="submit" value="Отправить">
+        </form>';
+echo $form;
+$data = $_POST["transport"];
+$data = explode(",", $data);
+
+$typesOfTransport = array_merge($typesOfTransport, $data);
+function listTransport($typesOfTransport) {
+    foreach ($typesOfTransport as $transport) {
+        echo '<li>' . $transport . '</li>';
+    }
+}
+
+/*foreach ($typesOfTransport as $transport) {
+    echo '<li>' . $transport . '</li>';
+}*/
