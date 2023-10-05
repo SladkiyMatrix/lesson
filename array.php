@@ -108,7 +108,11 @@ if (!isset($_POST['submit'])) {
 $typesOfTransport = ['автомобиль', 'самолет', 'паром', 'метро'];
 echo "Путешествовать можно по городу, стране или миру. Вот список некоторых распространенных видов транспорта:";
 
-
+function listTransport($typesOfTransport) {
+    foreach ($typesOfTransport as $transport) {
+        echo '<li>' . $transport . '</li>';
+    }
+}
 /*foreach ($typesOfTransport as $transport) {
     echo '<li>' . $transport . '</li>';
 }*/
@@ -117,19 +121,23 @@ $form = '
             <p>Можете добавить в список другие виды транспорта, разделенные запятыми </p>
             <p><input type="text" name="transport" value="' . $_POST["transport"] . '"/></p>
             <input type="submit" value="Отправить">
+            
+        </form>';
+
+$form2 = '
+        <form method="POST">
+            <p><input type="text" name="transport" placeholder="Добавить еще?" value="' . $_POST["semiTransport"] . '"/></p>
+            <input type="submit" value="Отправить">
+            
         </form>';
 
 $data = $_POST["transport"];
 $data = explode(",", $data);
 
 $typesOfTransport = array_merge($typesOfTransport, $data);
-function listTransport($typesOfTransport) {
-    foreach ($typesOfTransport as $transport) {
-        echo '<li>' . $transport . '</li>';
-    }
-}
+
 print_r (listTransport($typesOfTransport));
 echo $form;
-/*foreach ($typesOfTransport as $transport) {
-    echo '<li>' . $transport . '</li>';
-}*/
+//echo $form2;
+
+
