@@ -27,7 +27,7 @@ foreach($russia as  $towns) {
 
         }
     }*/
-$russia = [
+/*$russia = [
     'Московская область' => ['Москва', 'Зеленоград', 'Клин', 'Коломна', 'Карлик'],
     'Ленинградская область' => ['Санкт-Петербург', 'Всеволожск', 'Павловск', 'Кронштадт'],
     'Рязанская область' => ['Рязань', 'Михайлов', 'Кораблино', 'Ряжск'],
@@ -48,8 +48,7 @@ foreach ($russia as $towns) {
 $townsk = explode(',', $townlist);
 print_r($townsk);
 echo "<br>";
-/*$townlist = substr_replace($townlist,'.',-2);
-echo $townlist;*/
+
 $townlistK = '';
 foreach ($russia as $towns) {
 
@@ -63,7 +62,7 @@ foreach ($russia as $towns) {
 
 $townsK= explode(',', $townlistK);
 print_r($townsK);
-$array = array_unique (array_merge ($townsk, $townsK));
+$array = array_unique (array_merge ($townsk, $townsK));//объединение массивов с заменой повторений
 echo "<br>";
 print_r($array);
 echo "<br>";
@@ -71,8 +70,8 @@ unset($array[7]);
 echo "<br>";
 $str = implode(', ', $array);
 echo $str . '.';
-echo "<br>";
-$russia = [
+echo "<br>";*/
+/*$russia = [
     'Московская область' => ['Москва', 'кабанино', 'Зеленоград', 'Клин', 'Коломна', 'Карлик', 'кременчуг'],
     'Ленинградская область' => ['Санкт-Петербург', 'Всеволожск', 'Павловск', 'Кронштадт', 'кировск', ],
     'Рязанская область' => ['Рязань', 'Михайлов', 'Кораблино', 'Ряжск', 'кожемяка', 'кожный червь'],
@@ -90,4 +89,40 @@ foreach ($russia as $towns) {
         }
     }
 }
-echo $townliSthit;
+echo $townliSthit;*/
+//Добавление калоприёмки
+$russia = [
+    'Московская область' => ['Москва', 'кабанино', 'Зеленоград', 'Клин', 'Коломна', 'Карлик', 'кременчуг'],
+    'Ленинградская область' => ['Санкт-Петербург', 'Всеволожск', 'Павловск', 'Кронштадт', 'кировск', ],
+    'Рязанская область' => ['Рязань', 'Михайлов', 'Кораблино', 'Ряжск', 'кожемяка', 'кожный червь'],
+    'Тверская область' => ['Тверь', 'Ржев', 'Торжок', 'Бологое', 'Новая Калоприемка'],
+];
+$townListShit = '';
+foreach ($russia as $towns) {
+
+    foreach ($towns as $town) {
+
+        if (preg_match_all('/(^|\s|\b)+[К]+/u', $town)) {
+
+            $townListShit = $townListShit . $town . ',';
+        }
+    }
+}
+echo $townListShit;
+echo "<br>";
+$townListShit1 = '';
+foreach ($russia as $towns) {
+
+    foreach ($towns as $town) {
+
+        if (preg_match_all('/(^|\s|\b)+[к]+/u', $town)) {
+
+            $townListShit1 = $townListShit1 . $town . ',';
+        }
+    }
+}
+echo $townListShit1;
+echo "<br>";
+$s = $townListShit1 . $townListShit;
+$shit = substr($s, 0, -1);
+echo $shit . '.';
