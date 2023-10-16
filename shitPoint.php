@@ -147,6 +147,7 @@ foreach ($russia as $towns) {
                 }
             }
         }
+        continue;
         if (str_starts_with($town, 'к') || (str_starts_with($town, 'К'))) {
 
                 $townListShit = $townListShit . $town . ',';
