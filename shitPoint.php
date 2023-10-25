@@ -69,7 +69,8 @@ function townsearch($arraytown, $needle): string {
         }
 
     }
-    return $townListShit;
+    //функция возвращает все нужные названия городов и меняет последнюю запятую на точку
+    return substr_replace($townListShit, '.', -1, 1);
 }
 // maxlength=1 можно ограничить в форме ввод символов, но это слишком просто
 $form = '
@@ -92,9 +93,16 @@ $funcSearch = townsearch($russia, $letterTown);
  */
 // функция проверки введенной пользователем буквы
 function lenghtown($letterTown): string {
-    //проверка iconv_strlen проверяет введен ли 1 символ, а регулярное выражение - введен ли на кириллице
+    // проверка, пустое ли поле ввода, если жамкнуть по кнопке найти,
+    if (!empty($_GET["town"])) {
+        $letterTown = $_GET["town"];
+    } else {
+        echo "не пытайся меня обмануть и вводи букву, но только одну";
+        die();
+    }
+    //проверка iconv_strlen проверяет введен ли 1 символ, а mb_detect с кодировкой русских символов
     // отличие iconv от strlen в том что strlen проверяет на количество байтов, а в iconv можно указать кодировку и она проверяет именно символ
-    if( (iconv_strlen($letterTown, 'UTF-8')) == 1 && (preg_match("/^[А-Яа-я]+$/u", $letterTown))){
+    if( (iconv_strlen($letterTown, 'UTF-8')) == 1 && (mb_detect_encoding($letterTown, 'KOI8-R'))){
         // сделал переменную глобальной что бы вызвать её без ошибок в функции, другого способа не нашел
         //точнее нашел, но там класс использовать предлагали, потм побольше про них прочитаю
         global $funcSearch;
@@ -102,7 +110,7 @@ function lenghtown($letterTown): string {
         return $funcSearch;
 
     }else{
-        $errorForm = 'это не буква русского алфавита';
+        $errorForm = 'это не буква русского алфавита, или ты ввёл больше одной';
         //возвраает строку, если введенный символ не прошел проверку
         return $errorForm;
     }
