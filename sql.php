@@ -30,3 +30,4 @@ if ($connect->query($sql)===TRUE) {
 }
 //закрыли соединение
 //mysqli_close($connect);
+//я люблю собак
