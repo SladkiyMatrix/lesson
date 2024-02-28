@@ -136,4 +136,4 @@ function trans($string){
     $result = str_replace(' ', '_', $trans);
     return $result;
 }
-echo trans('иду по лесу, и тут, хуяк, рубль лежит, поднял и обосрался');
+echo trans('иду по лесу');
