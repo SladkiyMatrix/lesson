@@ -123,7 +123,7 @@ function encod($str){
     if(mb_detect_encoding($str, 'KOI8-R')){
         echo "$str - написано по русски";
     }else{
-        echo "сука, нихуя не по-русски";
+        echo "не по-русски";
     }
 }
 echo encod($str);*/
